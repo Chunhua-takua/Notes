@@ -1,0 +1,87 @@
+\documentclass[a4paper,twoside]{ctexart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[UTF8,scheme=plain]{ctex}
+\usepackage{chngcntr}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{forest}
+\usepackage{gensymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}  % 用于插入图片
+\usepackage{hyperref}
+\usepackage{indentfirst} % 首行缩进
+\usepackage{lastpage}
+\usepackage{pifont}
+\usepackage{ragged2e}
+\usepackage{setspace} % 加载行距宏包
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{upgreek}
+\usepackage{verbatim}
+\usepackage{wasysym} % 允许包含图像
+\usepackage{xassoccnt}
+\usepackage{etoolbox}
+
+\counterwithin*{enumi}{section} 
+\usetikzlibrary{calc}
+
+\setlength{\headheight}{20pt}
+
+% \pretocmd{\section}{\cleardoublepage}{}{}
+
+\date{} % not display time here
+
+\fancyhf{}
+\pagestyle{fancy} %fancyhdr宏包新增的页面风格
+
+% 奇偶页页眉
+\fancyhead[RO,LE]{\leftmark}  % 右侧显示章节标题，不自动大写
+\fancyhead[LO,RE]{《鲁迅全集》笔记} % 左侧显示固定文本
+
+
+\newCJKfontfamily\chisugafont{ChisugaShotai}
+% \setmainfont{FangSong} % 设置默认字体
+
+\begin{document}
+    % 不显示自动编号 且 能自动生成目录
+    \setcounter{secnumdepth}{0}
+
+    \title{\heiti\zihao{2} 《鲁迅全集》笔记}
+    \maketitle
+    \thispagestyle{empty} % 标题页不显示页码
+
+    \vfill
+    \centerline{\date{2025年12月}}
+
+    \setlength{\parindent}{4em}
+    \newpage
+
+    % 目录 罗马数字页码
+    \setcounter{page}{1}
+    \pagenumbering{Roman}
+    \cfoot{\thepage}
+
+    \hypersetup{colorlinks=true, linktocpage=true}
+    \tableofcontents
+
+    % 正文 阿拉伯数字页码
+    \newpage
+    \setcounter{page}{1}
+    \pagenumbering{arabic}
+    % 当前页 of 总页数
+    \cfoot{\thepage\ /~\pageref{LastPage}}
+
+    \zihao{4}
+
+    \begin{sloppy}
+        \begin{enumerate}
+            \input{./contents/nahan}
+            \input{./contents/eryiji}
+            \input{./contents/erxinji}
+            \input{./contents/fen}
+        \end{enumerate}
+    \end{sloppy}
+\end{document}
